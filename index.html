@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrabOn - Coupons, Promo Codes & Deals for US Stores</title>
-    <meta name="description" content="Save money on every purchase. Discover verified coupons, promo codes, and daily deals from thousands of popular US stores at GrabOn.">
+    <title>GrabOn — Coupons, Promo Codes & Deals</title>
+    <meta name="description" content="Find coupons, promo codes, and deals from popular US stores and save more on your online purchases.">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,22 +14,24 @@
         <div class="container header-container">
             <div class="header-left">
                 <a href="index.html" class="logo">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
                     GrabOn
                 </a>
                 <nav class="nav-desktop">
                     <a href="index.html" class="active">Home</a>
                     <a href="coupons.html">Coupons</a>
-                    <a href="coupons.html?cat=Stores">Stores</a>
-                    <a href="coupons.html?cat=Categories">Categories</a>
+                    <a href="coupons.html">Stores</a>
+                    <a href="coupons.html">Categories</a>
                     <a href="about.html">About</a>
                 </nav>
             </div>
             
             <div class="header-right">
-                <form class="header-search" action="coupons.html" method="GET">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <input type="text" name="q" placeholder="Search stores or coupons...">
+                <form action="coupons.html" method="GET" class="header-search-form">
+                    <input type="text" name="search" placeholder="Search stores or coupons..." required>
+                    <button type="submit">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
                 </form>
                 <button class="menu-toggle" id="mobile-menu-btn">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
@@ -39,178 +41,111 @@
         
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
-            <form action="coupons.html" method="GET" style="margin-bottom: 16px;">
-                <input type="text" name="q" placeholder="Search stores..." style="width:100%; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-md);">
-            </form>
             <a href="index.html">Home</a>
             <a href="coupons.html">Coupons & Deals</a>
             <a href="about.html">About GrabOn</a>
+            <form action="coupons.html" method="GET" style="display:flex; margin-top:8px;">
+                <input type="text" name="search" placeholder="Search..." style="flex:1; padding:8px; border:1px solid var(--border-color); border-radius:4px;">
+            </form>
         </div>
     </header>
 
     <!-- Hero -->
     <section class="hero">
+        <!-- Decorative Background Blobs -->
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        
         <div class="container">
-            <div class="hero-badge">
-                <span>&#10003;</span> Thousands of deals updated daily
-            </div>
-            <h1 class="hero-title">Save More on Every Purchase</h1>
-            <p class="hero-subtitle">Discover verified coupons, promo codes, and exclusive deals from the most popular US stores and brands.</p>
+            <span class="hero-eyebrow">Smarter Shopping Starts Here</span>
+            <h1 class="hero-title">Find <span class="text-gradient">Coupons</span>. <span class="text-gradient">Save More</span>.</h1>
+            <p class="hero-subtitle">Discover promo codes, coupons, and deals from popular US stores—all in one place.</p>
             
-            <form action="coupons.html" method="GET" class="hero-search-wrapper">
-                <input type="text" name="q" placeholder="Search for stores, brands, or coupons...">
-                <button type="submit" class="btn-primary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    Find Deals
-                </button>
+            <form action="coupons.html" method="GET" class="hero-search">
+                <input type="text" name="search" placeholder="Search stores, brands, or coupons..." required>
+                <button type="submit" class="btn-gradient">Find Deals</button>
             </form>
             
             <div class="hero-trust">
-                <div class="hero-trust-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    Verified Deals
-                </div>
-                <div class="hero-trust-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    Updated Daily
-                </div>
-                <div class="hero-trust-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    Free to Use
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Deals -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Today's Top Deals</h2>
-                <a href="coupons.html" class="view-all-link">View All <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
-            </div>
-            <div class="deals-grid" id="featured-deals">
-                <!-- Injected via JS -->
+                <span class="trust-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Easy to browse
+                </span>
+                <span class="trust-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/></svg>
+                    Updated offers
+                </span>
+                <span class="trust-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    Free to use
+                </span>
             </div>
         </div>
     </section>
 
     <!-- Popular Stores -->
-    <section class="section bg-light-alt">
+    <section class="section">
         <div class="container">
             <div class="section-header">
                 <h2>Popular Stores</h2>
-                <a href="coupons.html" class="view-all-link">All Stores <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+                <p>Explore deals from stores shoppers love.</p>
             </div>
+            
             <div class="stores-grid">
-                <div class="store-card">
-                    <div class="store-logo-lg">N</div>
+                <a href="coupons.html?store=Nike" class="store-card">
+                    <div class="store-initial">N</div>
                     <h3>Nike</h3>
-                    <p>12 Active Deals</p>
-                    <a href="coupons.html?store=Nike" class="store-link">View Deals &rarr;</a>
-                </div>
-                <div class="store-card">
-                    <div class="store-logo-lg">W</div>
+                    <span>View deals &rarr;</span>
+                </a>
+                <a href="coupons.html?store=Walmart" class="store-card">
+                    <div class="store-initial">W</div>
                     <h3>Walmart</h3>
-                    <p>25 Active Deals</p>
-                    <a href="coupons.html?store=Walmart" class="store-link">View Deals &rarr;</a>
-                </div>
-                <div class="store-card">
-                    <div class="store-logo-lg">T</div>
+                    <span>View deals &rarr;</span>
+                </a>
+                <a href="coupons.html?store=Target" class="store-card">
+                    <div class="store-initial">T</div>
                     <h3>Target</h3>
-                    <p>18 Active Deals</p>
-                    <a href="coupons.html?store=Target" class="store-link">View Deals &rarr;</a>
-                </div>
-                <div class="store-card">
-                    <div class="store-logo-lg">B</div>
+                    <span>View deals &rarr;</span>
+                </a>
+                <a href="coupons.html?store=Best Buy" class="store-card">
+                    <div class="store-initial">B</div>
                     <h3>Best Buy</h3>
-                    <p>15 Active Deals</p>
-                    <a href="coupons.html?store=Best Buy" class="store-link">View Deals &rarr;</a>
-                </div>
-                <div class="store-card">
-                    <div class="store-logo-lg" style="font-size: 1.2rem;">Amz</div>
-                    <h3>Amazon</h3>
-                    <p>30 Active Deals</p>
-                    <a href="coupons.html?store=Amazon" class="store-link">View Deals &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Shop by Category</h2>
-            <div class="categories-grid">
-                <a href="coupons.html?cat=Fashion" class="category-card">
-                    <div class="cat-icon">&#128085;</div>
-                    <span>Fashion</span>
+                    <span>View deals &rarr;</span>
                 </a>
-                <a href="coupons.html?cat=Electronics" class="category-card">
-                    <div class="cat-icon">&#128187;</div>
-                    <span>Electronics</span>
+                <a href="coupons.html?store=Adidas" class="store-card">
+                    <div class="store-initial">A</div>
+                    <h3>Adidas</h3>
+                    <span>View deals &rarr;</span>
                 </a>
-                <a href="coupons.html?cat=Beauty" class="category-card">
-                    <div class="cat-icon">&#128132;</div>
-                    <span>Beauty</span>
+                <a href="coupons.html?store=Macy's" class="store-card">
+                    <div class="store-initial">M</div>
+                    <h3>Macy's</h3>
+                    <span>View deals &rarr;</span>
                 </a>
-                <a href="coupons.html?cat=Home" class="category-card">
-                    <div class="cat-icon">&#127968;</div>
-                    <span>Home & Garden</span>
+                <a href="coupons.html?store=eBay" class="store-card">
+                    <div class="store-initial">e</div>
+                    <h3>eBay</h3>
+                    <span>View deals &rarr;</span>
                 </a>
-                <a href="coupons.html?cat=Travel" class="category-card">
-                    <div class="cat-icon">&#9992;</div>
-                    <span>Travel</span>
-                </a>
-                <a href="coupons.html?cat=Food" class="category-card">
-                    <div class="cat-icon">&#127828;</div>
-                    <span>Food & Dining</span>
+                <a href="coupons.html?store=Sephora" class="store-card">
+                    <div class="store-initial">S</div>
+                    <h3>Sephora</h3>
+                    <span>View deals &rarr;</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- How It Works & Trust -->
-    <section class="section bg-light-alt" style="border-top: 1px solid var(--border);">
+    <!-- Featured Coupons -->
+    <section class="section bg-sec">
         <div class="container">
-            <h2 class="section-title" style="text-align: center;">How to Save with GrabOn</h2>
-            <div class="steps-grid" style="margin-bottom: 64px;">
-                <div class="step-card">
-                    <div class="step-icon">1</div>
-                    <h3>Find a Deal</h3>
-                    <p>Search for your favorite store or browse our top categories to find active offers.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">2</div>
-                    <h3>Copy or Activate</h3>
-                    <p>Click to reveal the coupon code and copy it to your clipboard with one click.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">3</div>
-                    <h3>Save Money</h3>
-                    <p>Paste the code at the retailer's checkout page and watch your total drop.</p>
-                </div>
+            <div class="section-header">
+                <h2>Featured Coupons</h2>
+                <p>Popular offers worth checking today.</p>
             </div>
-
-            <div style="border-top: 1px solid var(--border); padding-top: 64px;">
-                <h2 class="section-title" style="text-align: center;">Why shoppers choose GrabOn</h2>
-                <div class="trust-grid">
-                    <div class="trust-card">
-                        <svg class="trust-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <h3>Regularly Checked</h3>
-                        <p>We routinely verify our top coupons to ensure they work at checkout.</p>
-                    </div>
-                    <div class="trust-card">
-                        <svg class="trust-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                        <h3>Thousands of Stores</h3>
-                        <p>Find deals for everyday essentials, tech, travel, fashion and more.</p>
-                    </div>
-                    <div class="trust-card">
-                        <svg class="trust-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        <h3>No Account Required</h3>
-                        <p>Our service is 100% free to use. No sign-ups or memberships needed.</p>
-                    </div>
-                </div>
+            
+            <div class="coupons-grid" id="featured-coupons">
+                <!-- Coupons injected via JS -->
             </div>
         </div>
     </section>
@@ -220,31 +155,22 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo">
+                    <div class="logo">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
                         GrabOn
-                    </a>
-                    <p>Your trusted destination for verified coupons, promo codes, and online deals. Save more on every purchase.</p>
+                    </div>
+                    <p>Coupons, promo codes and deals for smarter shopping.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Popular Categories</h4>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#">Fashion</a></li>
-                        <li><a href="#">Electronics</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Health & Beauty</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="coupons.html">Coupons</a></li>
+                        <li><a href="coupons.html">Stores</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Helpful Links</h4>
-                    <ul>
-                        <li><a href="coupons.html">All Coupons</a></li>
-                        <li><a href="#">Top Stores</a></li>
-                        <li><a href="#">Today's Deals</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
+                <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
@@ -255,7 +181,6 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 GrabOn. All rights reserved.</p>
-                <p>Designed for US Shoppers</p>
             </div>
         </div>
     </footer>
@@ -263,18 +188,15 @@
     <!-- Coupon Modal -->
     <div class="modal-overlay" id="coupon-modal">
         <div class="modal-content">
-            <button class="modal-close" id="modal-close">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-            <div class="modal-store-logo" id="modal-store-name">N</div>
-            <h3 class="modal-title" id="modal-title">Your Coupon Code</h3>
-            <p class="modal-desc" id="modal-desc">Copy this code and apply it at checkout.</p>
+            <button class="modal-close" id="modal-close">&times;</button>
+            <p>Your Coupon</p>
+            <div class="modal-store" id="modal-store">NIKE</div>
+            <div class="modal-discount" id="modal-discount">20% OFF</div>
             
-            <div class="code-container">
-                <div class="code-text" id="modal-code">SAVE20</div>
-            </div>
+            <div class="modal-code-box" id="modal-code">SAVE20</div>
             
-            <button class="btn-copy" id="modal-copy-btn">Copy Code</button>
+            <button class="modal-btn-copy" id="modal-copy-btn">Copy Code</button>
+            <a href="#" class="modal-btn-visit">Visit Store</a>
         </div>
     </div>
 

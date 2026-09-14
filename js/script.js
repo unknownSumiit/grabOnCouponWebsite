@@ -1,109 +1,85 @@
-// Mock Data
+// script.js
+
+// Mock Data (Demo only)
 const couponsData = [
-    { id: 1, store: 'Nike', discount: 'Up to 40% Off', title: 'Up to 40% Off Select Styles', description: 'Save on selected shoes, activewear, and accessories.', code: 'SAVE40', category: 'Fashion', expires: 'Ends soon', type: 'DEAL', verified: true },
-    { id: 2, store: 'Walmart', discount: '$20 OFF', title: '$20 Off Your First Grocery Order', description: 'Minimum spend of $50 required. Excludes electronics.', code: 'GROCERY20', category: 'Home', expires: 'Verified Today', type: 'COUPON', verified: true },
-    { id: 3, store: 'Best Buy', discount: '20% OFF', title: '20% Off Select Electronics', description: 'Discount applies at checkout on eligible items.', code: 'TECHSAVE', category: 'Electronics', expires: '2 Days Left', type: 'COUPON', verified: true },
-    { id: 4, store: 'Target', discount: '$5 OFF', title: '$5 Gift Card on $50 Purchase', description: 'Valid on health and beauty purchases online.', code: 'BEAUTY5', category: 'Beauty', expires: 'Verified Today', type: 'COUPON', verified: true },
-    { id: 5, store: 'Amazon', discount: 'Free Shipping', title: 'Free One-Day Shipping', description: 'Available on eligible prime orders over $25.', code: '', category: 'Shopping', expires: 'Ongoing', type: 'DEAL', verified: true },
-    { id: 6, store: 'Sephora', discount: '15% OFF', title: '15% Off Sitewide for Members', description: 'Beauty Insider members save 15% on all orders.', code: 'INSIDER15', category: 'Beauty', expires: 'Ends Tomorrow', type: 'COUPON', verified: true },
-    { id: 7, store: 'Expedia', discount: '10% OFF', title: '10% Off Hotel Bookings', description: 'Save on select hotels. Must book by Friday.', code: 'TRAVEL10', category: 'Travel', expires: 'Verified Today', type: 'COUPON', verified: true },
-    { id: 8, store: 'Adidas', discount: '30% OFF', title: '30% Off Outlet Items', description: 'Extra 30% off already reduced outlet apparel.', code: 'EXTRA30', category: 'Fashion', expires: 'Verified Today', type: 'COUPON', verified: true }
+    { id: 1, store: 'Nike', discount: '20% OFF', title: '20% Off Selected Items', desc: 'Save 20% on selected products.', expires: 'Expires Dec 31, 2026', code: 'SAVE20', category: 'Fashion', type: 'COUPON' },
+    { id: 2, store: 'Walmart', discount: '$10 OFF', title: '$10 Off Your Next Order', desc: 'Save on your next online grocery order.', expires: 'Expires Nov 30, 2026', code: 'WALMART10', category: 'Home', type: 'COUPON' },
+    { id: 3, store: 'Adidas', discount: '15% OFF', title: '15% Off Sitewide', desc: 'Applies to full-price and sale items.', expires: 'Expires Dec 31, 2026', code: 'ADIDAS15', category: 'Fashion', type: 'COUPON' },
+    { id: 4, store: 'Sephora', discount: '10% OFF', title: '10% Off Beauty Products', desc: 'Valid for beauty insider members.', expires: 'Expires Dec 31, 2026', code: 'BEAUTY10', category: 'Beauty', type: 'COUPON' },
+    { id: 5, store: 'Target', discount: '$5 OFF', title: '$5 Off Orders Over $50', desc: 'Save on household essentials.', expires: 'Expires Oct 31, 2026', code: 'TARGET5', category: 'Home', type: 'COUPON' },
+    { id: 6, store: 'Best Buy', discount: 'Free Ship', title: 'Free Shipping on Electronics', desc: 'No minimum purchase required.', expires: 'Expires Dec 31, 2026', code: '', category: 'Electronics', type: 'DEAL' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Mobile Menu Toggle
-    const menuBtn = document.getElementById('mobile-menu-btn');
+    // Mobile Menu
+    const menuToggle = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-            // Toggle icon
-            if(mobileMenu.classList.contains('open')) {
-                menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
-            } else {
-                menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
-            }
+    if(menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
         });
     }
 
-    // Modal logic
-    const modalOverlay = document.getElementById('coupon-modal');
+    // Modal
+    const modal = document.getElementById('coupon-modal');
     const modalClose = document.getElementById('modal-close');
-    const copyBtn = document.getElementById('modal-copy-btn');
-    
-    if (modalClose && modalOverlay) {
+    if(modal && modalClose) {
         modalClose.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) closeModal();
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
         });
     }
 
-    if (copyBtn) {
+    // Copy Code
+    const copyBtn = document.getElementById('modal-copy-btn');
+    if(copyBtn) {
         copyBtn.addEventListener('click', () => {
             const code = document.getElementById('modal-code').textContent;
-            if(code && code !== 'No Code Needed') {
+            if(code && code !== 'DEAL APPLIED') {
                 navigator.clipboard.writeText(code).then(() => {
-                    copyBtn.textContent = 'Copied!';
+                    copyBtn.textContent = 'Code Copied!';
                     copyBtn.classList.add('success');
-                    showToast('Coupon code copied to clipboard!');
-                    
                     setTimeout(() => {
                         copyBtn.textContent = 'Copy Code';
                         copyBtn.classList.remove('success');
-                    }, 3000);
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy', err);
                 });
-            } else {
-                window.open('#', '_blank'); // Mock redirect for deals
             }
         });
     }
 
     // Initialize Pages
-    if (document.getElementById('featured-deals')) {
-        renderCoupons(couponsData.slice(0, 4), 'featured-deals');
+    if (document.getElementById('featured-coupons')) {
+        renderCoupons(couponsData, 'featured-coupons');
     }
 
-    if (document.getElementById('coupons-directory')) {
-        initCouponsDirectory();
+    if (document.getElementById('coupons-list')) {
+        initCouponsPage();
     }
 });
 
-// Toast Notification
-function showToast(message) {
-    let toast = document.getElementById('toast');
-    if (!toast) {
-        toast = document.createElement('div');
-        toast.id = 'toast';
-        toast.className = 'toast';
-        document.body.appendChild(toast);
-    }
-    toast.textContent = message;
-    toast.classList.add('show');
-    
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 3000);
-}
-
+// Modal Functions
 window.openModal = function(id) {
     const coupon = couponsData.find(c => c.id === id);
     if (!coupon) return;
 
-    document.getElementById('modal-store-name').textContent = coupon.store.charAt(0);
-    document.getElementById('modal-title').textContent = coupon.title;
-    document.getElementById('modal-desc').textContent = coupon.description;
+    document.getElementById('modal-store').textContent = coupon.store;
+    document.getElementById('modal-discount').textContent = coupon.discount;
     
     const codeEl = document.getElementById('modal-code');
     const copyBtn = document.getElementById('modal-copy-btn');
     
     if (coupon.type === 'COUPON') {
         codeEl.textContent = coupon.code;
-        copyBtn.textContent = 'Copy Code';
+        copyBtn.style.display = 'block';
     } else {
-        codeEl.textContent = 'No Code Needed';
-        copyBtn.textContent = 'Shop Sale';
+        codeEl.textContent = 'DEAL APPLIED';
+        copyBtn.style.display = 'none';
     }
 
     const modal = document.getElementById('coupon-modal');
@@ -115,42 +91,32 @@ function closeModal() {
     modal.classList.remove('active');
 }
 
-function renderCoupons(coupons, containerId) {
+// Render Coupons
+function renderCoupons(data, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     
     container.innerHTML = '';
     
-    if (coupons.length === 0) {
-        container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1;">No deals found matching your criteria.</p>';
+    if (data.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-sec);">No coupons found. Try another search.</p>';
         return;
     }
-    
-    coupons.forEach(coupon => {
-        const isCoupon = coupon.type === 'COUPON';
-        const badgeIcon = coupon.verified ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg>' : '';
-        
+
+    data.forEach(coupon => {
+        const badgeClass = coupon.type === 'COUPON' ? 'coupon-badge' : 'coupon-badge deal';
         const html = `
             <div class="coupon-card">
-                <div class="card-top">
-                    <div class="store-info">
-                        <div class="store-logo-sm">${coupon.store.charAt(0)}</div>
-                        <div class="store-name-sm">${coupon.store}</div>
-                    </div>
-                    ${coupon.verified ? `<span class="badge verified">${badgeIcon} Verified</span>` : ''}
+                <div class="coupon-header">
+                    <span>${coupon.store}</span>
+                    <span class="${badgeClass}">${coupon.type}</span>
                 </div>
-                
-                <h3 class="coupon-discount">${coupon.discount}</h3>
-                <p class="coupon-desc">${coupon.title}</p>
-                
-                <div class="card-bottom">
-                    <div class="card-meta">
-                        <span>${coupon.expires}</span>
-                        <span class="badge deal-type">${coupon.type}</span>
-                    </div>
-                    <button class="btn-get-deal" onclick="openModal(${coupon.id})">
-                        ${isCoupon ? 'Show Coupon' : 'Get Deal'}
-                    </button>
+                <div class="coupon-discount">${coupon.discount}</div>
+                <h3 class="coupon-title">${coupon.title}</h3>
+                <p class="coupon-desc">${coupon.desc}</p>
+                <div class="coupon-footer">
+                    <span class="coupon-expires">${coupon.expires}</span>
+                    <button class="btn-primary btn-block" onclick="openModal(${coupon.id})">Get ${coupon.type === 'COUPON' ? 'Coupon' : 'Deal'}</button>
                 </div>
             </div>
         `;
@@ -158,61 +124,86 @@ function renderCoupons(coupons, containerId) {
     });
 }
 
-function initCouponsDirectory() {
-    let currentCategory = 'All';
+// Coupons Page Logic
+function initCouponsPage() {
+    let currentCat = 'All';
+    let currentStore = 'All';
     let searchQuery = '';
-    
+
     // Parse URL params
     const params = new URLSearchParams(window.location.search);
-    const storeParam = params.get('store');
-    const qParam = params.get('q');
-    
-    if(qParam) {
-        searchQuery = qParam.toLowerCase();
-        const searchInput = document.getElementById('directory-search');
-        if(searchInput) searchInput.value = qParam;
+    if (params.get('search')) searchQuery = params.get('search').toLowerCase();
+    if (params.get('store')) currentStore = params.get('store');
+    if (params.get('category')) currentCat = params.get('category');
+
+    // Set initial UI state
+    const searchInput = document.getElementById('page-search');
+    if(searchInput && searchQuery) searchInput.value = searchQuery;
+
+    const storeSelect = document.getElementById('store-filter');
+    if(storeSelect && currentStore !== 'All') {
+        const optionExists = Array.from(storeSelect.options).some(opt => opt.value === currentStore);
+        if(optionExists) storeSelect.value = currentStore;
     }
 
-    function applyFilters() {
+    const catBtns = document.querySelectorAll('.cat-btn');
+    if(catBtns) {
+        catBtns.forEach(btn => {
+            if(btn.dataset.cat === currentCat) {
+                document.querySelector('.cat-btn.active')?.classList.remove('active');
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    function filterData() {
         let filtered = [...couponsData];
-        
-        if (currentCategory !== 'All') {
-            filtered = filtered.filter(c => c.category === currentCategory);
-        }
-        
-        if (storeParam) {
-            filtered = filtered.filter(c => c.store.toLowerCase() === storeParam.toLowerCase());
-        }
-        
+
         if (searchQuery) {
             filtered = filtered.filter(c => 
-                c.store.toLowerCase().includes(searchQuery) || 
-                c.title.toLowerCase().includes(searchQuery)
+                c.store.toLowerCase().includes(searchQuery) ||
+                c.title.toLowerCase().includes(searchQuery) ||
+                c.desc.toLowerCase().includes(searchQuery)
             );
         }
-        
-        renderCoupons(filtered, 'coupons-directory');
+
+        if (currentStore !== 'All') {
+            filtered = filtered.filter(c => c.store.toLowerCase() === currentStore.toLowerCase());
+        }
+
+        if (currentCat !== 'All') {
+            filtered = filtered.filter(c => c.category === currentCat);
+        }
+
+        renderCoupons(filtered, 'coupons-list');
     }
 
-    // Category buttons
-    const catBtns = document.querySelectorAll('.filter-btn.cat');
-    catBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            catBtns.forEach(b => b.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            currentCategory = e.currentTarget.dataset.cat;
-            applyFilters();
-        });
-    });
-
-    // Search input
-    const searchInput = document.getElementById('directory-search');
+    // Event Listeners
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             searchQuery = e.target.value.toLowerCase();
-            applyFilters();
+            filterData();
         });
     }
-    
-    applyFilters();
+
+    if (storeSelect) {
+        storeSelect.addEventListener('change', (e) => {
+            currentStore = e.target.value;
+            filterData();
+        });
+    }
+
+    if (catBtns) {
+        catBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                catBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentCat = e.target.dataset.cat;
+                filterData();
+            });
+        });
+    }
+
+    // Initial render
+    filterData();
 }

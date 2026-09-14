@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions - GrabOn</title>
+    <title>Terms & Conditions — GrabOn</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- Header -->
     <header class="header">
         <div class="container header-container">
             <div class="header-left">
@@ -18,15 +19,29 @@
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
                     <a href="coupons.html">Coupons</a>
+                    <a href="coupons.html">Stores</a>
+                    <a href="coupons.html">Categories</a>
                     <a href="about.html">About</a>
                 </nav>
             </div>
+            
+            <div class="header-right">
+                <button class="menu-toggle" id="mobile-menu-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="coupons.html">Coupons & Deals</a>
+            <a href="about.html">About GrabOn</a>
         </div>
     </header>
 
-    <div class="container text-page-layout">
-        <div class="prose">
+    <div class="container">
+        <div class="text-page">
             <h1>Terms & Conditions</h1>
+            
             <p>By accessing and using GrabOn, you agree to these Terms of Use.</p>
             
             <h2>Use of Service</h2>
@@ -45,12 +60,22 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo">
+                    <div class="logo">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
                         GrabOn
-                    </a>
+                    </div>
+                    <p>Coupons, promo codes and deals for smarter shopping.</p>
                 </div>
-                <div class="footer-col">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="coupons.html">Coupons</a></li>
+                        <li><a href="coupons.html">Stores</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
@@ -64,6 +89,7 @@
             </div>
         </div>
     </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>
