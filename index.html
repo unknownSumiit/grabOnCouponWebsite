@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrabOn - Best Coupons & Deals</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">GrabOn</a>
+            
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="coupons.html">Coupons</a>
+                <a href="about.html">About</a>
+            </nav>
+            
+            <div class="header-search">
+                <form action="coupons.html" method="GET" style="display:flex;">
+                    <input type="text" placeholder="Search stores..." name="q">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Save More with the Best Coupons & Deals</h1>
+            <p>Discover coupons, promo codes, and online deals from popular stores.</p>
+            
+            <form action="coupons.html" method="GET" class="hero-search">
+                <input type="text" name="q" placeholder="Search stores, brands, or coupons...">
+                <button type="submit">Find Deals</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Popular Stores</h2>
+            <div class="stores-grid">
+                <!-- Stores -->
+                <div class="store-card">
+                    <div class="store-icon">N</div>
+                    <div class="store-name">Nike</div>
+                    <div class="store-deals">12 Deals Available</div>
+                    <a href="coupons.html?store=Nike" class="btn-outline">View Deals</a>
+                </div>
+                <div class="store-card">
+                    <div class="store-icon">W</div>
+                    <div class="store-name">Walmart</div>
+                    <div class="store-deals">25 Deals Available</div>
+                    <a href="coupons.html?store=Walmart" class="btn-outline">View Deals</a>
+                </div>
+                <div class="store-card">
+                    <div class="store-icon">T</div>
+                    <div class="store-name">Target</div>
+                    <div class="store-deals">18 Deals Available</div>
+                    <a href="coupons.html?store=Target" class="btn-outline">View Deals</a>
+                </div>
+                <div class="store-card">
+                    <div class="store-icon">B</div>
+                    <div class="store-name">Best Buy</div>
+                    <div class="store-deals">15 Deals Available</div>
+                    <a href="coupons.html?store=Best Buy" class="btn-outline">View Deals</a>
+                </div>
+                <div class="store-card">
+                    <div class="store-icon">M</div>
+                    <div class="store-name">Macy's</div>
+                    <div class="store-deals">20 Deals Available</div>
+                    <a href="coupons.html?store=Macy's" class="btn-outline">View Deals</a>
+                </div>
+                <div class="store-card">
+                    <div class="store-icon">A</div>
+                    <div class="store-name">Adidas</div>
+                    <div class="store-deals">10 Deals Available</div>
+                    <a href="coupons.html?store=Adidas" class="btn-outline">View Deals</a>
+                </div>
+                <div class="store-card">
+                    <div class="store-icon">E</div>
+                    <div class="store-name">eBay</div>
+                    <div class="store-deals">30 Deals Available</div>
+                    <a href="coupons.html?store=eBay" class="btn-outline">View Deals</a>
+                </div>
+                <div class="store-card">
+                    <div class="store-icon">S</div>
+                    <div class="store-name">Sephora</div>
+                    <div class="store-deals">8 Deals Available</div>
+                    <a href="coupons.html?store=Sephora" class="btn-outline">View Deals</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Today's Top Deals</h2>
+            <div class="coupons-grid" id="top-deals-container">
+                <!-- Injected via JS -->
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="coupons.html" class="btn-outline">View All Deals</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">How GrabOn Works</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>1. Find a Deal</h3>
+                    <p>Browse coupons and offers from popular stores.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔓</div>
+                    <h3>2. Reveal Your Coupon</h3>
+                    <p>Click "Get Coupon" to reveal the available code.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>3. Save Money</h3>
+                    <p>Apply the code at checkout and enjoy your savings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Why Shop With GrabOn?</h2>
+            <div class="features-grid">
+                <div class="feature-card" style="border:1px solid #e5e7eb; border-radius: 8px;">
+                    <h3>Easy to Find</h3>
+                    <p>Quickly discover deals and promo codes.</p>
+                </div>
+                <div class="feature-card" style="border:1px solid #e5e7eb; border-radius: 8px;">
+                    <h3>Simple to Use</h3>
+                    <p>Copy a coupon code with one click.</p>
+                </div>
+                <div class="feature-card" style="border:1px solid #e5e7eb; border-radius: 8px;">
+                    <h3>Free to Browse</h3>
+                    <p>No account is required to discover deals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <h2>Get the Latest Deals</h2>
+            <p>Sign up to receive new coupons and shopping deals.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <div class="newsletter-msg" id="newsletter-msg">Thanks! You're subscribed.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="about.html">About</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+            <p>&copy; 2026 GrabOn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="coupon-modal">
+        <div class="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-discount" id="modal-discount">20% OFF</div>
+            <div class="modal-store" id="modal-store">Nike</div>
+            <div class="modal-title" id="modal-title">Your Coupon Code</div>
+            
+            <div class="code-box" id="modal-code">SAVE20</div>
+            
+            <div class="copy-success" id="copy-success">&#10003; Code Copied!</div>
+            
+            <button class="btn-copy" id="modal-copy-btn">Copy Code</button>
+            <a href="#" class="btn-visit">Visit Store</a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

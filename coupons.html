@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Coupons & Promo Codes - GrabOn</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">GrabOn</a>
+            
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="coupons.html" style="color:var(--primary);">Coupons</a>
+                <a href="about.html">About</a>
+            </nav>
+            
+            <div class="header-search">
+                <form action="coupons.html" method="GET" style="display:flex;">
+                    <input type="text" placeholder="Search stores..." name="q" id="header-search-input">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="coupons-layout">
+            
+            <aside class="sidebar">
+                <div class="filter-group">
+                    <h3>Search</h3>
+                    <input type="text" class="filter-select" id="page-search" placeholder="Search coupons...">
+                </div>
+
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <button class="filter-btn category-btn active" data-cat="All">All Categories</button>
+                    <button class="filter-btn category-btn" data-cat="Fashion">Fashion</button>
+                    <button class="filter-btn category-btn" data-cat="Electronics">Electronics</button>
+                    <button class="filter-btn category-btn" data-cat="Beauty">Beauty</button>
+                    <button class="filter-btn category-btn" data-cat="Home">Home</button>
+                    <button class="filter-btn category-btn" data-cat="Food">Food</button>
+                    <button class="filter-btn category-btn" data-cat="Travel">Travel</button>
+                    <button class="filter-btn category-btn" data-cat="Shopping">Shopping</button>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Store</h3>
+                    <select class="filter-select" id="store-filter">
+                        <option value="All Stores">All Stores</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Walmart">Walmart</option>
+                        <option value="Target">Target</option>
+                        <option value="Best Buy">Best Buy</option>
+                        <option value="Macy's">Macy's</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="eBay">eBay</option>
+                        <option value="Sephora">Sephora</option>
+                    </select>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="page-header">
+                    <h1>Latest Coupons & Promo Codes</h1>
+                    <select class="filter-select" style="width: auto;" id="sort-filter">
+                        <option value="Most Popular">Most Popular</option>
+                        <option value="Highest Discount">Highest Discount</option>
+                        <option value="Newest">Newest</option>
+                    </select>
+                </div>
+
+                <div class="coupons-grid" id="coupons-page-container">
+                    <!-- Coupons injected via JS -->
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="about.html">About</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+            <p>&copy; 2026 GrabOn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="coupon-modal">
+        <div class="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-discount" id="modal-discount"></div>
+            <div class="modal-store" id="modal-store"></div>
+            <div class="modal-title" id="modal-title">Your Coupon Code</div>
+            
+            <div class="code-box" id="modal-code"></div>
+            
+            <div class="copy-success" id="copy-success">&#10003; Code Copied!</div>
+            
+            <button class="btn-copy" id="modal-copy-btn">Copy Code</button>
+            <a href="#" class="btn-visit">Visit Store</a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
