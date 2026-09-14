@@ -8,75 +8,69 @@
 </head>
 <body>
 
-    <header>
-        <div class="container header-inner">
-            <a href="index.html" class="logo">GrabOn</a>
-            
-            <nav class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="coupons.html" style="color:var(--primary);">Coupons</a>
-                <a href="about.html">About</a>
-            </nav>
-            
-            <div class="header-search">
-                <form action="coupons.html" method="GET" style="display:flex;">
-                    <input type="text" placeholder="Search stores..." name="q" id="header-search-input">
-                    <button type="submit">Search</button>
-                </form>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
+                    GrabOn
+                </a>
+                <nav class="nav-desktop">
+                    <a href="index.html">Home</a>
+                    <a href="coupons.html" class="active">Coupons</a>
+                    <a href="coupons.html?cat=Stores">Stores</a>
+                    <a href="coupons.html?cat=Categories">Categories</a>
+                    <a href="about.html">About</a>
+                </nav>
             </div>
             
-            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            <div class="header-right">
+                <form class="header-search" action="coupons.html" method="GET">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" name="q" placeholder="Search stores or coupons...">
+                </form>
+                <button class="menu-toggle" id="mobile-menu-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+                </button>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <div class="coupons-layout">
+        <div class="page-layout">
             
+            <!-- Sidebar -->
             <aside class="sidebar">
-                <div class="filter-group">
-                    <h3>Search</h3>
-                    <input type="text" class="filter-select" id="page-search" placeholder="Search coupons...">
-                </div>
-
-                <div class="filter-group">
-                    <h3>Categories</h3>
-                    <button class="filter-btn category-btn active" data-cat="All">All Categories</button>
-                    <button class="filter-btn category-btn" data-cat="Fashion">Fashion</button>
-                    <button class="filter-btn category-btn" data-cat="Electronics">Electronics</button>
-                    <button class="filter-btn category-btn" data-cat="Beauty">Beauty</button>
-                    <button class="filter-btn category-btn" data-cat="Home">Home</button>
-                    <button class="filter-btn category-btn" data-cat="Food">Food</button>
-                    <button class="filter-btn category-btn" data-cat="Travel">Travel</button>
-                    <button class="filter-btn category-btn" data-cat="Shopping">Shopping</button>
-                </div>
-
-                <div class="filter-group">
-                    <h3>Store</h3>
-                    <select class="filter-select" id="store-filter">
-                        <option value="All Stores">All Stores</option>
-                        <option value="Nike">Nike</option>
-                        <option value="Walmart">Walmart</option>
-                        <option value="Target">Target</option>
-                        <option value="Best Buy">Best Buy</option>
-                        <option value="Macy's">Macy's</option>
-                        <option value="Adidas">Adidas</option>
-                        <option value="eBay">eBay</option>
-                        <option value="Sephora">Sephora</option>
-                    </select>
+                <div class="filter-box">
+                    <h3>Search Filters</h3>
+                    <input type="text" id="directory-search" class="filter-search" placeholder="Search keyword or store...">
+                    
+                    <h3 style="margin-top: 24px; border-top: none;">Categories</h3>
+                    <div class="filter-list">
+                        <button class="filter-btn cat active" data-cat="All">All Categories <span>8</span></button>
+                        <button class="filter-btn cat" data-cat="Fashion">Fashion <span>2</span></button>
+                        <button class="filter-btn cat" data-cat="Electronics">Electronics <span>1</span></button>
+                        <button class="filter-btn cat" data-cat="Beauty">Beauty <span>2</span></button>
+                        <button class="filter-btn cat" data-cat="Home">Home & Garden <span>1</span></button>
+                        <button class="filter-btn cat" data-cat="Travel">Travel <span>1</span></button>
+                        <button class="filter-btn cat" data-cat="Shopping">Shopping <span>1</span></button>
+                    </div>
                 </div>
             </aside>
 
+            <!-- Main Content -->
             <main class="main-content">
-                <div class="page-header">
-                    <h1>Latest Coupons & Promo Codes</h1>
-                    <select class="filter-select" style="width: auto;" id="sort-filter">
-                        <option value="Most Popular">Most Popular</option>
-                        <option value="Highest Discount">Highest Discount</option>
-                        <option value="Newest">Newest</option>
+                <div class="page-controls">
+                    <h1 class="page-title">Latest Coupons & Deals</h1>
+                    <select class="sort-select">
+                        <option>Recommended</option>
+                        <option>Newest First</option>
+                        <option>Expiring Soon</option>
                     </select>
                 </div>
 
-                <div class="coupons-grid" id="coupons-page-container">
+                <div class="deals-grid" id="coupons-directory">
                     <!-- Coupons injected via JS -->
                 </div>
             </main>
@@ -84,32 +78,66 @@
         </div>
     </div>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <a href="about.html">About</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Use</a>
-                <a href="disclaimer.html">Disclaimer</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
+                        GrabOn
+                    </a>
+                    <p>Your trusted destination for verified coupons, promo codes, and online deals. Save more on every purchase.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Popular Categories</h4>
+                    <ul>
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Travel</a></li>
+                        <li><a href="#">Health & Beauty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Helpful Links</h4>
+                    <ul>
+                        <li><a href="coupons.html">All Coupons</a></li>
+                        <li><a href="#">Top Stores</a></li>
+                        <li><a href="#">Today's Deals</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
             </div>
-            <p>&copy; 2026 GrabOn. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GrabOn. All rights reserved.</p>
+                <p>Designed for US Shoppers</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Modal -->
+    <!-- Coupon Modal -->
     <div class="modal-overlay" id="coupon-modal">
-        <div class="modal">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <div class="modal-discount" id="modal-discount"></div>
-            <div class="modal-store" id="modal-store"></div>
-            <div class="modal-title" id="modal-title">Your Coupon Code</div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="modal-store-logo" id="modal-store-name">N</div>
+            <h3 class="modal-title" id="modal-title">Your Coupon Code</h3>
+            <p class="modal-desc" id="modal-desc">Copy this code and apply it at checkout.</p>
             
-            <div class="code-box" id="modal-code"></div>
-            
-            <div class="copy-success" id="copy-success">&#10003; Code Copied!</div>
+            <div class="code-container">
+                <div class="code-text" id="modal-code">SAVE20</div>
+            </div>
             
             <button class="btn-copy" id="modal-copy-btn">Copy Code</button>
-            <a href="#" class="btn-visit">Visit Store</a>
         </div>
     </div>
 

@@ -8,25 +8,32 @@
 </head>
 <body>
 
-    <header>
-        <div class="container header-inner">
-            <a href="index.html" class="logo">GrabOn</a>
-            <nav class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="coupons.html">Coupons</a>
-                <a href="about.html" style="color:var(--primary);">About</a>
-            </nav>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+    <header class="header">
+        <div class="container header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
+                    GrabOn
+                </a>
+                <nav class="nav-desktop">
+                    <a href="index.html">Home</a>
+                    <a href="coupons.html">Coupons</a>
+                    <a href="about.html" class="active">About</a>
+                </nav>
+            </div>
+            <button class="menu-toggle" id="mobile-menu-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+            </button>
         </div>
     </header>
 
-    <div class="container">
-        <div class="text-page">
+    <div class="container text-page-layout">
+        <div class="prose">
             <h1>About GrabOn</h1>
-            <p>GrabOn is a coupon and deals discovery website designed to help US shoppers find promotional offers and discounts from online retailers.</p>
+            <p>GrabOn is a premium coupon and deals discovery platform designed specifically to help US shoppers find the best promotional offers and discounts from their favorite online retailers.</p>
             
             <h2>What We Do</h2>
-            <p>We aggregate and organize the best digital coupons, promo codes, and deals from top retailers. Our goal is to make it simple and easy for shoppers to find savings before they checkout.</p>
+            <p>We aggregate, verify, and organize the best digital coupons, promo codes, and deals from top retailers. Our goal is to make it simple and easy for shoppers to find legitimate savings before they checkout.</p>
             
             <h2>How Coupons Work</h2>
             <p>When you find a deal you like on our site, simply click on it. For promo codes, you can copy the code and paste it into the retailer's checkout page. For deals and sales, we'll direct you to the page where the discount is already applied or detailed.</p>
@@ -34,30 +41,42 @@
             <h2>Affiliate Disclosure</h2>
             <p>GrabOn is an independent discovery platform. We do not claim affiliation with any retailer listed on our site. Any trademarks or logos used are for informational purposes only. We may earn a commission when you use one of our links to make a purchase, which helps keep our site free to use.</p>
             
-            <h2>Coupon Accuracy</h2>
-            <p>While we strive to keep our information accurate and up-to-date, please note:</p>
+            <h2>Coupon Accuracy & Verification</h2>
+            <p>While our team works hard to verify our top deals and keep our information accurate, please note:</p>
             <ul>
-                <li>Coupons may expire without notice.</li>
-                <li>Retailers can change or cancel promotions at any time.</li>
-                <li>Some offers may have restrictions or exclusions not listed on our site.</li>
-                <li>GrabOn does not guarantee that every coupon will work.</li>
-                <li>Users should check the retailer's terms and conditions before completing a purchase.</li>
+                <li>Coupons may expire without prior notice from the retailer.</li>
+                <li>Retailers can change, modify, or cancel promotions at any time.</li>
+                <li>Some offers may have restrictions, exclusions, or minimum purchase requirements not listed on our site.</li>
+                <li>GrabOn does not guarantee that every coupon will work for every user or product.</li>
+                <li>Users should always check the retailer's terms and conditions before completing a purchase.</li>
             </ul>
         </div>
     </div>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <a href="about.html">About</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Use</a>
-                <a href="disclaimer.html">Disclaimer</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
+                        GrabOn
+                    </a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
             </div>
-            <p>&copy; 2026 GrabOn. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GrabOn. All rights reserved.</p>
+            </div>
         </div>
     </footer>
-
     <script src="js/script.js"></script>
 </body>
 </html>

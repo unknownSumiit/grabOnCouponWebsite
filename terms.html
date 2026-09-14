@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Use - GrabOn</title>
+    <title>Terms & Conditions - GrabOn</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <div class="container header-inner">
-            <a href="index.html" class="logo">GrabOn</a>
-            <nav class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="coupons.html">Coupons</a>
-                <a href="about.html">About</a>
-            </nav>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+    <header class="header">
+        <div class="container header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
+                    GrabOn
+                </a>
+                <nav class="nav-desktop">
+                    <a href="index.html">Home</a>
+                    <a href="coupons.html">Coupons</a>
+                    <a href="about.html">About</a>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <div class="container">
-        <div class="text-page">
-            <h1>Terms of Use</h1>
+    <div class="container text-page-layout">
+        <div class="prose">
+            <h1>Terms & Conditions</h1>
             <p>By accessing and using GrabOn, you agree to these Terms of Use.</p>
             
             <h2>Use of Service</h2>
@@ -36,15 +40,28 @@
         </div>
     </div>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <a href="about.html">About</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Use</a>
-                <a href="disclaimer.html">Disclaimer</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
+                        GrabOn
+                    </a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
             </div>
-            <p>&copy; 2026 GrabOn. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GrabOn. All rights reserved.</p>
+            </div>
         </div>
     </footer>
     <script src="js/script.js"></script>

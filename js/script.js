@@ -1,97 +1,111 @@
-// script.js
-
 // Mock Data
 const couponsData = [
-    { id: 1, store: 'Nike', discount: '20% OFF', title: '20% Off Selected Items', description: 'Save 20% on selected products.', code: 'SAVE20', category: 'Fashion', expires: 'Dec 31, 2026', type: 'COUPON', popular: true, new: true },
-    { id: 2, store: 'Walmart', discount: '$10 OFF', title: '$10 Off Your Next Order', description: 'Save $10 when eligible.', code: 'SAVE10', category: 'Home', expires: 'Dec 31, 2026', type: 'COUPON', popular: true, new: false },
-    { id: 3, store: 'Adidas', discount: '15% OFF', title: '15% Off Sitewide', description: 'Save 15% on your entire order.', code: 'DEAL15', category: 'Fashion', expires: 'Dec 31, 2026', type: 'COUPON', popular: true, new: true },
-    { id: 4, store: 'Sephora', discount: '10% OFF', title: '10% Off Beauty Products', description: 'Save 10% on selected beauty products.', code: 'BEAUTY10', category: 'Beauty', expires: 'Dec 31, 2026', type: 'COUPON', popular: true, new: false },
-    { id: 5, store: 'Target', discount: '$5 OFF', title: '$5 Off Orders Over $50', description: 'Save $5 when you spend $50 or more.', code: 'TARGET5', category: 'Shopping', expires: 'Nov 30, 2026', type: 'DEAL', popular: false, new: true },
-    { id: 6, store: 'Best Buy', discount: '5% OFF', title: '5% Off Electronics', description: 'Save 5% on selected electronics.', code: 'TECH5', category: 'Electronics', expires: 'Oct 31, 2026', type: 'COUPON', popular: false, new: false },
-    { id: 7, store: 'Macy\'s', discount: 'FREE SHIPPING', title: 'Free Shipping on Orders Over $25', description: 'Get free shipping on your next order.', code: 'FREESHIP', category: 'Fashion', expires: 'Dec 31, 2026', type: 'DEAL', popular: false, new: true },
-    { id: 8, store: 'eBay', discount: '10% OFF', title: '10% Off Refurbished Items', description: 'Save 10% on certified refurbished items.', code: 'EBAY10', category: 'Electronics', expires: 'Dec 31, 2026', type: 'COUPON', popular: false, new: false }
+    { id: 1, store: 'Nike', discount: 'Up to 40% Off', title: 'Up to 40% Off Select Styles', description: 'Save on selected shoes, activewear, and accessories.', code: 'SAVE40', category: 'Fashion', expires: 'Ends soon', type: 'DEAL', verified: true },
+    { id: 2, store: 'Walmart', discount: '$20 OFF', title: '$20 Off Your First Grocery Order', description: 'Minimum spend of $50 required. Excludes electronics.', code: 'GROCERY20', category: 'Home', expires: 'Verified Today', type: 'COUPON', verified: true },
+    { id: 3, store: 'Best Buy', discount: '20% OFF', title: '20% Off Select Electronics', description: 'Discount applies at checkout on eligible items.', code: 'TECHSAVE', category: 'Electronics', expires: '2 Days Left', type: 'COUPON', verified: true },
+    { id: 4, store: 'Target', discount: '$5 OFF', title: '$5 Gift Card on $50 Purchase', description: 'Valid on health and beauty purchases online.', code: 'BEAUTY5', category: 'Beauty', expires: 'Verified Today', type: 'COUPON', verified: true },
+    { id: 5, store: 'Amazon', discount: 'Free Shipping', title: 'Free One-Day Shipping', description: 'Available on eligible prime orders over $25.', code: '', category: 'Shopping', expires: 'Ongoing', type: 'DEAL', verified: true },
+    { id: 6, store: 'Sephora', discount: '15% OFF', title: '15% Off Sitewide for Members', description: 'Beauty Insider members save 15% on all orders.', code: 'INSIDER15', category: 'Beauty', expires: 'Ends Tomorrow', type: 'COUPON', verified: true },
+    { id: 7, store: 'Expedia', discount: '10% OFF', title: '10% Off Hotel Bookings', description: 'Save on select hotels. Must book by Friday.', code: 'TRAVEL10', category: 'Travel', expires: 'Verified Today', type: 'COUPON', verified: true },
+    { id: 8, store: 'Adidas', discount: '30% OFF', title: '30% Off Outlet Items', description: 'Extra 30% off already reduced outlet apparel.', code: 'EXTRA30', category: 'Fashion', expires: 'Verified Today', type: 'COUPON', verified: true }
 ];
 
-// Mobile Menu
 document.addEventListener('DOMContentLoaded', () => {
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const navLinks = document.getElementById('nav-links');
     
-    if(mobileBtn && navLinks) {
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
-
-    // Modal elements
-    const modalOverlay = document.getElementById('coupon-modal');
-    const modalClose = document.getElementById('modal-close');
-    const copyBtn = document.getElementById('modal-copy-btn');
-    const copySuccess = document.getElementById('copy-success');
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
     
-    // Close modal
-    if(modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
-    
-    if(modalOverlay) {
-        modalOverlay.addEventListener('click', (e) => {
-            if(e.target === modalOverlay) closeModal();
-        });
-    }
-
-    // Copy Code
-    if(copyBtn) {
-        copyBtn.addEventListener('click', () => {
-            const code = document.getElementById('modal-code').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                copySuccess.style.display = 'block';
-                copyBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                    copySuccess.style.display = 'none';
-                    copyBtn.textContent = 'Copy Code';
-                }, 2000);
-            });
-        });
-    }
-
-    // Newsletter
-    const newsletterForm = document.getElementById('newsletter-form');
-    if(newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const input = document.getElementById('newsletter-email');
-            const msg = document.getElementById('newsletter-msg');
-            
-            if(input.value && input.value.includes('@')) {
-                msg.style.display = 'block';
-                input.value = '';
-                setTimeout(() => {
-                    msg.style.display = 'none';
-                }, 3000);
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            // Toggle icon
+            if(mobileMenu.classList.contains('open')) {
+                menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+            } else {
+                menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
             }
         });
     }
 
-    // Initialize Home or Coupons Page
-    if(document.getElementById('top-deals-container')) {
-        renderCoupons(couponsData.slice(0, 4), 'top-deals-container');
+    // Modal logic
+    const modalOverlay = document.getElementById('coupon-modal');
+    const modalClose = document.getElementById('modal-close');
+    const copyBtn = document.getElementById('modal-copy-btn');
+    
+    if (modalClose && modalOverlay) {
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
     }
 
-    if(document.getElementById('coupons-page-container')) {
-        initCouponsPage();
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            const code = document.getElementById('modal-code').textContent;
+            if(code && code !== 'No Code Needed') {
+                navigator.clipboard.writeText(code).then(() => {
+                    copyBtn.textContent = 'Copied!';
+                    copyBtn.classList.add('success');
+                    showToast('Coupon code copied to clipboard!');
+                    
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Copy Code';
+                        copyBtn.classList.remove('success');
+                    }, 3000);
+                });
+            } else {
+                window.open('#', '_blank'); // Mock redirect for deals
+            }
+        });
+    }
+
+    // Initialize Pages
+    if (document.getElementById('featured-deals')) {
+        renderCoupons(couponsData.slice(0, 4), 'featured-deals');
+    }
+
+    if (document.getElementById('coupons-directory')) {
+        initCouponsDirectory();
     }
 });
 
-function openModal(couponId) {
-    const coupon = couponsData.find(c => c.id === couponId);
-    if(!coupon) return;
-
-    document.getElementById('modal-discount').textContent = coupon.discount;
-    document.getElementById('modal-store').textContent = coupon.store;
-    document.getElementById('modal-title').textContent = 'Your Coupon Code';
-    document.getElementById('modal-code').textContent = coupon.code;
+// Toast Notification
+function showToast(message) {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
     
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+window.openModal = function(id) {
+    const coupon = couponsData.find(c => c.id === id);
+    if (!coupon) return;
+
+    document.getElementById('modal-store-name').textContent = coupon.store.charAt(0);
+    document.getElementById('modal-title').textContent = coupon.title;
+    document.getElementById('modal-desc').textContent = coupon.description;
+    
+    const codeEl = document.getElementById('modal-code');
+    const copyBtn = document.getElementById('modal-copy-btn');
+    
+    if (coupon.type === 'COUPON') {
+        codeEl.textContent = coupon.code;
+        copyBtn.textContent = 'Copy Code';
+    } else {
+        codeEl.textContent = 'No Code Needed';
+        copyBtn.textContent = 'Shop Sale';
+    }
+
     const modal = document.getElementById('coupon-modal');
     modal.classList.add('active');
 }
@@ -103,122 +117,102 @@ function closeModal() {
 
 function renderCoupons(coupons, containerId) {
     const container = document.getElementById(containerId);
-    if(!container) return;
+    if (!container) return;
     
     container.innerHTML = '';
     
-    if(coupons.length === 0) {
-        container.innerHTML = '<p>No coupons found matching your criteria.</p>';
+    if (coupons.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1;">No deals found matching your criteria.</p>';
         return;
     }
     
     coupons.forEach(coupon => {
-        const badgeClass = coupon.type === 'COUPON' ? 'badge-coupon' : 'badge-deal';
+        const isCoupon = coupon.type === 'COUPON';
+        const badgeIcon = coupon.verified ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg>' : '';
         
-        const card = document.createElement('div');
-        card.className = 'coupon-card';
-        card.innerHTML = `
-            <div class="coupon-header">
-                <span class="coupon-store">${coupon.store}</span>
-                <span class="badge ${badgeClass}">${coupon.type}</span>
+        const html = `
+            <div class="coupon-card">
+                <div class="card-top">
+                    <div class="store-info">
+                        <div class="store-logo-sm">${coupon.store.charAt(0)}</div>
+                        <div class="store-name-sm">${coupon.store}</div>
+                    </div>
+                    ${coupon.verified ? `<span class="badge verified">${badgeIcon} Verified</span>` : ''}
+                </div>
+                
+                <h3 class="coupon-discount">${coupon.discount}</h3>
+                <p class="coupon-desc">${coupon.title}</p>
+                
+                <div class="card-bottom">
+                    <div class="card-meta">
+                        <span>${coupon.expires}</span>
+                        <span class="badge deal-type">${coupon.type}</span>
+                    </div>
+                    <button class="btn-get-deal" onclick="openModal(${coupon.id})">
+                        ${isCoupon ? 'Show Coupon' : 'Get Deal'}
+                    </button>
+                </div>
             </div>
-            <div class="coupon-discount">${coupon.discount}</div>
-            <div class="coupon-title">${coupon.title}</div>
-            <div class="coupon-desc">${coupon.description}</div>
-            <div class="coupon-meta">
-                <span>${coupon.category}</span>
-                <span>Expires ${coupon.expires}</span>
-            </div>
-            <button class="btn-get-coupon" onclick="openModal(${coupon.id})">Get Coupon</button>
         `;
-        container.appendChild(card);
+        container.insertAdjacentHTML('beforeend', html);
     });
 }
 
-function initCouponsPage() {
+function initCouponsDirectory() {
     let currentCategory = 'All';
-    let currentStore = 'All';
-    let currentSort = 'Most Popular';
+    let searchQuery = '';
     
-    // Check URL params for store
-    const urlParams = new URLSearchParams(window.location.search);
-    const storeParam = urlParams.get('store');
-    if(storeParam) {
-        currentStore = storeParam;
-        const storeSelect = document.getElementById('store-filter');
-        if(storeSelect) storeSelect.value = storeParam;
+    // Parse URL params
+    const params = new URLSearchParams(window.location.search);
+    const storeParam = params.get('store');
+    const qParam = params.get('q');
+    
+    if(qParam) {
+        searchQuery = qParam.toLowerCase();
+        const searchInput = document.getElementById('directory-search');
+        if(searchInput) searchInput.value = qParam;
     }
 
-    function filterAndRender() {
+    function applyFilters() {
         let filtered = [...couponsData];
         
-        if(currentCategory !== 'All') {
+        if (currentCategory !== 'All') {
             filtered = filtered.filter(c => c.category === currentCategory);
         }
         
-        if(currentStore !== 'All Stores' && currentStore !== 'All') {
-            filtered = filtered.filter(c => c.store.toLowerCase() === currentStore.toLowerCase());
+        if (storeParam) {
+            filtered = filtered.filter(c => c.store.toLowerCase() === storeParam.toLowerCase());
         }
         
-        // Sorting logic (mock logic)
-        if(currentSort === 'Newest') {
-            filtered = filtered.filter(c => c.new).concat(filtered.filter(c => !c.new));
-        } else if (currentSort === 'Highest Discount') {
-            // simple mock sort
-            filtered = filtered.reverse();
+        if (searchQuery) {
+            filtered = filtered.filter(c => 
+                c.store.toLowerCase().includes(searchQuery) || 
+                c.title.toLowerCase().includes(searchQuery)
+            );
         }
         
-        renderCoupons(filtered, 'coupons-page-container');
+        renderCoupons(filtered, 'coupons-directory');
     }
 
-    // Category Buttons
-    const catButtons = document.querySelectorAll('.category-btn');
-    catButtons.forEach(btn => {
+    // Category buttons
+    const catBtns = document.querySelectorAll('.filter-btn.cat');
+    catBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            catButtons.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentCategory = e.target.dataset.cat;
-            filterAndRender();
+            catBtns.forEach(b => b.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            currentCategory = e.currentTarget.dataset.cat;
+            applyFilters();
         });
     });
-    
-    // Store Filter
-    const storeSelect = document.getElementById('store-filter');
-    if(storeSelect) {
-        storeSelect.addEventListener('change', (e) => {
-            currentStore = e.target.value;
-            filterAndRender();
-        });
-    }
-    
-    // Sort Filter
-    const sortSelect = document.getElementById('sort-filter');
-    if(sortSelect) {
-        sortSelect.addEventListener('change', (e) => {
-            currentSort = e.target.value;
-            filterAndRender();
-        });
-    }
-    
-    // Search
-    const searchInput = document.getElementById('page-search');
-    if(searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            if(term === '') {
-                filterAndRender();
-                return;
-            }
-            
-            const searched = couponsData.filter(c => 
-                c.store.toLowerCase().includes(term) ||
-                c.title.toLowerCase().includes(term) ||
-                c.description.toLowerCase().includes(term) ||
-                c.code.toLowerCase().includes(term)
-            );
-            renderCoupons(searched, 'coupons-page-container');
-        });
-    }
 
-    filterAndRender();
+    // Search input
+    const searchInput = document.getElementById('directory-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase();
+            applyFilters();
+        });
+    }
+    
+    applyFilters();
 }
